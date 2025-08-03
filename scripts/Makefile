@@ -3,7 +3,7 @@
 # Usage: make [target]
 
 # Variables
-TARGET = curriculo
+TARGET = resume
 LATEX = pdflatex
 LATEX_FLAGS = -interaction=nonstopmode
 CLEAN_EXTENSIONS = aux log out toc lof lot fls fdb_latexmk synctex.gz bbl blg bcf run.xml
