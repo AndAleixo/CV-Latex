@@ -1,0 +1,311 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Carrega as configurações personalizadas
+\input{config}
+
+% Configurações de hyperref
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    citecolor=primary
+}
+
+% Configurações de títulos
+\titleformat{\section}
+    {\Large\bfseries\color{primary}}
+    {}{0em}{}[\titlerule]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{secondary}}
+    {}{0em}{}
+
+% Configurações de listas
+\setlist[itemize]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
+\setlist[enumerate]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
+
+% Espaçamento
+\onehalfspacing
+
+% Cabeçalho
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage\ / \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+% Cabeçalho principal com design moderno e fundo escuro
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[black] (-\hoffset-\oddsidemargin-2in,-4cm) rectangle (\paperwidth+\hoffset+\oddsidemargin+2in,3cm);
+\end{tikzpicture}
+
+\vspace{-2cm}
+\begin{center}
+    \begin{minipage}[t]{0.1\textwidth}
+        % Coluna da esquerda - Foto
+        \begin{center}
+            \begin{tikzpicture}
+                \clip (0,0) circle (1.5cm);
+                \node at (0,0) {\includegraphics[width=3cm]{Foto.png}};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.7\textwidth}
+        % Coluna da direita - Dados pessoais
+        \begin{flushleft}
+            {\Huge\bfseries\color{white} \nome}\\[0.4em]
+            {\large\color{white} \titulo}\\[1.2em]
+            
+            % Dados pessoais em duas colunas
+            \begin{minipage}[t]{0.48\textwidth}
+                \begin{tabular}{ll}
+                    \color{white}\faIcon{envelope} & \color{white}\href{mailto:\email}{\email} \\
+                    \color{white}\faIcon{phone} & \color{white}\telefone
+                \end{tabular}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.48\textwidth}
+                \begin{tabular}{ll}
+                    \color{white}\faIcon{linkedin} & \color{white}\href{https://www.\linkedin}{\linkedin} \\
+                    \color{white}\faIcon{github} & \color{white}\href{https://\github}{\github}
+                \end{tabular}
+            \end{minipage}
+            
+            \vspace{0.5em}
+            % Location below
+            \begin{center}
+                \color{white}\faIcon{map-marker-alt} \color{white} San Sebastián, Basque Country, Spain \\
+                \color{white} Available to relocate to the United Kingdom
+            \end{center}
+        \end{flushleft}
+    \end{minipage}
+\end{center}
+
+\vspace{2.5em}
+
+\vspace{1em}
+
+% Education
+\section{Education}
+
+\subsection{Master's Degree in Automation, Electronics and Industrial Control}
+\textit{University of Deusto} \hfill \textit{2019 - 2020}
+\begin{itemize}
+    \item Master's Degree in Automation, Electronics and Industrial Control
+    \item Specialized in industrial automation, embedded systems, and robotics
+    \item \textit{GPA: 7.6/10.0 (3.8/5.0 international scale)}
+\end{itemize}
+
+\subsection{Bachelor's Degree in Electrical and Electronics Engineering}
+\textit{Universidade Federal de Pernambuco} \hfill \textit{2013 - 2018}
+\begin{itemize}
+    \item Bachelor's Degree in Electrical and Electronics Engineering
+    \item Focus on embedded systems, FPGA design, and biomedical electronics
+\end{itemize}
+
+% Professional Summary
+\section{Professional Summary}
+\resumo
+
+% Career Objective
+\section{Career Objective}
+\begin{itemize}
+    \item Seeking opportunities in FPGA design, embedded systems development, and industrial automation
+    \item Passionate about real-time systems, computer vision, and robotics integration
+    \item Interested in leading-edge technologies including edge computing and AI acceleration
+\end{itemize}
+
+% Professional Experience
+\section{Professional Experience}
+
+\subsection{Electronics Department Lead}
+\textit{INZU Group (Ikergune)} \hfill \textit{January 2023 - Present}
+\textit{San Sebastián, Basque Country, Spain}
+\begin{itemize}
+    \item Led development of advanced vision systems utilizing NIR and SWIR spectral cameras for industrial process analysis, implementing custom C\# software for real-time image acquisition and processing with RTSP and HTTP streaming protocol support
+    \item Designed and implemented FPGA IP cores for convolutional kernel acceleration on Xilinx UltraScale+ devices, creating high-throughput data pipelines for real-time image processing applications
+    \item Integrated FPGA acceleration into embedded edge computing platforms running Yocto Linux, developing C++ drivers and middleware for FPGA interface and data flow management
+    \item Engineered industrial communication solutions integrating IO-Link and HTTP protocols with machine networks, implementing robust protocol stacks for reliable data exchange and control
+    \item Developed custom sensor systems using Infineon microcontrollers with FreeRTOS, incorporating PID control loops and SPI peripheral communication, with PCB design via Altium Designer, for particulate matter measurement applications
+    \item Designed and implemented stepper motor control systems using XMC microcontrollers integrated with FreeRTOS, developing trajectory control algorithms with acceleration and deceleration profiles in C/C++ for precise motion management
+\end{itemize}
+\textit{Skills:} Yocto Project, Verilog, FPGA, C++, Embedded C, HDL Designer, FPGA prototyping, Bash, VHDL, Field-Programmable Gate Arrays, CMake, Bare-Metal Embedded, Device Drivers, Data Acquisition, Embedded Linux, Embedded Systems, Hardware Description Language, Firmware, I2C, IO-Link, Kernel, Devicetree, U-Boot, Bootloader, OpenCV, Computer Vision, Machine Learning
+
+\subsection{Software Engineer}
+\textit{INZU Group (Ikergune)} \hfill \textit{August 2022 - January 2023}
+\textit{San Sebastián, Basque Country, Spain}
+\begin{itemize}
+    \item Designed and implemented comprehensive integration pipeline between custom CAD/CAM system and robotic simulation API, utilizing C++ to automate simulation, path planning, and KUKA code generation
+    \item Developed both API interface and post-processor components, managing complete workflow from trajectory acquisition to robot-compatible output generation
+    \item Adapted toolpaths from upstream CAM software to KUKA syntax, incorporating kinematic validation, axis limits, and machine-specific parameters
+    \item Validated generated programs through simulation and deployment in robotic cell environment, ensuring precise and collision-free execution
+\end{itemize}
+\textit{Skills:} C++, CMake, Application Programming Interfaces (API), Automation, Industrial Robots, Robot Framework, CAD/CAM Software
+
+\subsection{Robotics Integration Engineer}
+\textit{INZU Group (Ikergune)} \hfill \textit{May 2021 - August 2022}
+\textit{San Sebastián, Basque Country, Spain}
+\begin{itemize}
+    \item Developed and configured complete KUKA robot control system using WorkVisual, including programming of robot motion sequences and comprehensive system diagnostics
+    \item Engineered safety systems for robotic cell, implementing both robot-integrated safety functions and safety zone monitoring using PROFIsafe protocol stack over PROFINET, ensuring compliance with industrial safety standards (SIL/PL)
+    \item Performed precision and repeatability verification using laser tracker systems, developing custom C\# scripts to automate measurement sequences, data acquisition, and error analysis
+\end{itemize}
+\textit{Skills:} Robot Framework, Protocol Stacks, Profinet, PROFIsafe, IO-Link, EtherCAT, C++, C\#
+
+\subsection{Automation \& Software Developer}
+\textit{INZU Group (Ikergune)} \hfill \textit{September 2020 - May 2021}
+\textit{Elgóibar, Basque Country, Spain}
+\begin{itemize}
+    \item Developed Python scripts to automate and optimize internal industrial processes, enhancing efficiency and repeatability in manufacturing workflows
+    \item Built C\# applications to integrate user interfaces and machine controls, streamlining human-machine interaction and data flow management
+    \item Participated in computer vision projects, contributing to development of inspection and monitoring systems using cameras and image processing techniques
+    \item Contributed to design and implementation of patented industrial control system for automated powder feeding equipment, integrating motor control, pressure regulation, and sensor feedback loops
+    \item Developed control logic using PLCs and integrated SCADA systems for real-time process monitoring, data acquisition, and system supervision
+\end{itemize}
+\textit{Skills:} SCADA, PLC Siemens, PLC Programming, Programmable Logic Controller (PLC), SIMATIC STEP 7, PyTorch, Tkinter, Python, Anaconda, Windows Presentation Foundation (WPF), WPF Development, C\#
+
+\subsection{System Engineer}
+\textit{Aingura IIoT} \hfill \textit{February 2020 - September 2020}
+\textit{Bilbao, Basque Country, Spain}
+\begin{itemize}
+    \item Developed embedded C code for Texas Instruments DSP to acquire digital sensor signals and communicate with C\# application via SCI (Serial Communication Interface)
+    \item Built C\# application to acquire data from industrial KUKA robot over TCP/IP (via KUKAVARPROXY) and interface with DSP for synchronized data handling and storage
+    \item Created LabVIEW RT modules on CompactRIO for real-time acquisition of digital signals and robot position data via TCP/IP, including data management and logging
+    \item Integrated external sensors to capture physical signals related to robot movement, ensuring signal consistency across different acquisition systems
+    \item Performed system calibration, trajectory setup, and signal comparison to validate synchronization and analyze timing behavior across hardware and software layers
+\end{itemize}
+\textit{Skills:} Embedded Systems, Signal Processing, Internet Protocol Suite (TCP/IP), C\#, LabVIEW, Kuka Robot, Data Analysis, MATLAB, NI LabVIEW, TI DSPs, Kuka Robots, Industrial Robots, Embedded C, Object-Oriented Programming (OOP)
+
+\subsection{Embedded Systems \& Telemetry Engineer – Aerospace Subsystems}
+\textit{Asa Branca Rocket Design} \hfill \textit{March 2018 - July 2019}
+\textit{Recife, Pernambuco, Brazil}
+\begin{itemize}
+    \item Developed telemetry subsystem for rockets, drones, and cubesats, focusing on real-time sensor data acquisition, processing, and inter-subsystem communication
+    \item Programmed firmware in C using ChibiOS/RT on STM32 boards, ensuring scalable and deterministic embedded architecture for critical flight operations
+    \item Integrated sensors via SPI, I²C, and UART, optimizing driver-level communication and RTOS task management
+\end{itemize}
+\textit{Skills:} Embedded Systems, Linux, Real-Time Operating Systems (RTOS), C, Task Management, Data Acquisition, Satellite Systems Engineering, ChibiOS, Universal Asynchronous Receiver/Transmitter (UART), STM32, SPI, I2C, Spacecraft Telemetry
+
+\subsection{Researcher}
+\textit{Universidade Federal de Pernambuco} \hfill \textit{July 2016 - January 2019}
+\textit{Recife, Pernambuco, Brazil}
+\begin{itemize}
+    \item Developed analog and embedded systems for biomedical therapy and monitoring applications
+    \item Developed electrical stimulator for gait improvement in Parkinson's patients, using MSP430 microcontroller and real-time inertial feedback (I²C accelerometers/gyroscopes) for stimulation timing control
+    \item Designed power control and switching circuit for hyperhidrosis treatment, using CMOS transistor arrays, MSP430-based PWM modulation, LTspice simulations, and PCB prototyping in Proteus
+    \item Contributed to experimental validation and interface control of FES systems for neuromuscular stimulation
+\end{itemize}
+\textit{Skills:} System on a Chip (SoC), C, Biomedical Electronics, Electronics Design, Embedded Systems, MATLAB, Signal Processing, MSP430, Launchpad TI(Texas Instruments), Bare-Metal Embedded, Real-Time Operating Systems (RTOS), I2C
+
+\subsection{Undergraduate Researcher – NFC Vital Sign Acquisition System}
+\textit{Universidade Federal de Pernambuco} \hfill \textit{July 2017 - July 2018}
+\textit{Recife, Pernambuco, Brazil}
+\begin{itemize}
+    \item Developed passive embedded system based on NXP/Freescale FRDM-K64F microcontroller, powered via NFC and capable of acquiring vital signs such as heart rate and blood oxygen saturation without external power source
+    \item Designed and integrated NFC-based energy harvesting architecture using NTAG I²C Plus interface (Class 6), enabling biomedical signal acquisition (MAX30100) and seamless wireless communication with Android application
+    \item Project presented at CBEB (Brazilian Congress of Biomedical Engineering) — largest biomedical engineering conference in Brazil — and awarded Ricardo Ferreira Award to Talented Young Scientist, recognized as best undergraduate scientific research of the year (2018)
+\end{itemize}
+\textit{Skills:} System on a Chip (SoC), Android Studio, Embedded Systems, NFC, NXP, Signal Processing, Radio-Frequency Identification (RFID), Bare-Metal Embedded, Biomedical Electronics, Freescale
+
+\subsection{FPGA Engineer Intern}
+\textit{CETENE} \hfill \textit{August 2015 - December 2015}
+\textit{Recife, Pernambuco, Brazil}
+\begin{itemize}
+    \item Contributed to initial development and simulation of custom SDRAM controller IP for Altera FPGAs, using VHDL and ModelSim testbenches
+    \item Contributed to development and simulation of FPGA components for low-power RFID reader project, aligned with EPCglobal Class 1 Gen 2 protocol
+    \item Assisted in integration of Alien RFID Readers into plant inspection application, supporting configuration, testing, and operational validation
+\end{itemize}
+\textit{Skills:} Radio Frequency (RF), FPGA prototyping, VHDL, RFID Applications, Intel Quartus Prime, ModelSim, SystemVerilog
+
+% Technical Skills
+\section{Technical Skills}
+
+\subsection{Programming Languages \& Embedded Systems}
+\begin{itemize}
+    \item \textbf{C/C++}: Embedded systems development, Real-time programming, FreeRTOS, ChibiOS/RT, Bare-Metal Embedded
+    \item \textbf{C\#}: Industrial applications, Real-time image processing, GUI development, WPF Development
+    \item \textbf{Python}: Industrial automation, Data processing, Scripting, PyTorch, Anaconda
+    \item \textbf{VHDL/Verilog}: FPGA design, IP core development, Digital signal processing, FPGA prototyping
+\end{itemize}
+
+\subsection{FPGA \& Hardware Design}
+\begin{itemize}
+    \item \textbf{FPGA}: Xilinx UltraScale+, VHDL, IP cores, Real-time processing, Field-Programmable Gate Arrays
+    \item \textbf{Microcontrollers}: STM32, MSP430, Infineon XMC, FreeRTOS, TI DSPs
+    \item \textbf{PCB Design}: Altium Designer, Electronics Design, Bare-Metal Embedded
+\end{itemize}
+
+\subsection{Development Tools \& Platforms}
+\begin{itemize}
+    \item \textbf{Embedded Linux}: Yocto Project, Kernel, Devicetree, U-Boot, Bootloader, Device Drivers
+    \item \textbf{Computer Vision}: OpenCV, Machine Learning, Data Analysis
+    \item \textbf{Signal Processing}: MATLAB, Real-Time Operating Systems (RTOS)
+    \item \textbf{Communication}: I2C, SPI, UART, TCP/IP, NFC, RFID Applications
+\end{itemize}
+
+\subsection{Industrial Automation \& Robotics}
+\begin{itemize}
+    \item \textbf{Industrial}: KUKA robots, PROFINET, IO-Link, PLC programming, Robot Framework
+    \item \textbf{Protocols}: PROFIsafe, EtherCAT, Data Acquisition
+    \item \textbf{SCADA}: PLC Siemens, SIMATIC STEP 7, Programmable Logic Controller (PLC)
+\end{itemize}
+
+% Key Projects
+\section{Key Projects}
+\begin{itemize}
+    \item \textbf{NIR/SWIR Vision Systems}: Developed advanced spectral imaging systems for industrial process analysis using custom C\# software and FPGA acceleration, achieving 90\% cost reduction compared to initial project estimates
+    \item \textbf{FPGA IP Core Development}: Designed and implemented convolutional kernel acceleration IP cores for Xilinx UltraScale+ devices, significantly reducing latency and hardware utilization
+    \item \textbf{Robotic Cell Integration}: Engineered complete KUKA robot control systems with safety protocols and precision verification
+    \item \textbf{Industrial Control Patent}: Co-authored engineering and industrial control patent integrated into a €100+ million project
+\end{itemize}
+
+% Academic Mentorship
+\section{Academic Mentorship}
+\begin{itemize}
+    \item \textbf{Mentor:} B. Michalewicz \\
+    \textit{Development of a Frame Grabber Application on a Xilinx Zynq-Based Heterogeneous Platform}
+    
+    \item \textbf{Mentor:} P. Matanzas \\
+    \textit{Design and Implementation of an FPGA-based Acceleration System for Real-Time Image Processing}
+    
+    \item \textbf{Mentor:} J. Barturen \\
+    \textit{Vulnerability Analysis in Industrial Automation: Pentesting in Sinumerik ONE Architectures with Profinet and IO-Link Wireless Communications}
+    
+    \item \textbf{Mentor:} P. Matanzas \\
+    \textit{Design and Implementation of a Customized Linux Distribution for Real-Time Image Processing in Industrial Environments}
+\end{itemize}
+
+% Technical Certifications
+\section{Technical Certifications}
+\begin{itemize}
+    \item \textbf{Verilog for an FPGA Engineer with Xilinx Vivado Design Suite}
+    \item \textbf{Embedded Linux Using Yocto}
+    \item \textbf{Programación TPE, Nivel B - FANUC Europe}
+    \item \textbf{Certified LabVIEW Associate Developer (National Instruments)}
+\end{itemize}
+
+% Languages
+\section{Languages}
+\begin{itemize}
+    \item \textbf{Portuguese}: Native or bilingual proficiency
+    \item \textbf{Spanish}: Full professional proficiency
+    \item \textbf{English}: Professional working proficiency
+\end{itemize}
+
+\end{document} 
