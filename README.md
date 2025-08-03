@@ -65,11 +65,4 @@ scripts/
 └── compilar.bat      # Windows compilation
 ```
 
-## Tips
-
-- `config.tex` doesn't go to git (privacy)
-- `Foto.png` can be committed to GitHub
-- If it gives an error, check if all LaTeX packages are installed
-- The PDF will be in the `src/` folder
-
 That's it! 
