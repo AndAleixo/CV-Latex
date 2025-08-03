@@ -43,7 +43,7 @@ make
 **Manual:**
 ```bash
 cd src
-pdflatex -interaction=nonstopmode curriculo.tex
+pdflatex -interaction=nonstopmode resume.tex
 ```
 
 ## What you need installed
@@ -55,7 +55,7 @@ pdflatex -interaction=nonstopmode curriculo.tex
 
 ```
 src/
-├── curriculo.tex        # Main file
+├── resume.tex           # Main file
 ├── config_example.tex   # Example data template
 ├── config.tex          # Your data (not committed)
 └── Foto.png           # Your photo 

@@ -3,7 +3,7 @@ REM Professional LaTeX Resume Compilation Script for Windows
 REM Author: André F. Pinheiro Aleixo
 REM Usage: compilar.bat [option]
 
-set TARGET=curriculo
+set TARGET=resume
 set LATEX=pdflatex
 set LATEX_FLAGS=-interaction=nonstopmode
 set SRC_DIR=..\src

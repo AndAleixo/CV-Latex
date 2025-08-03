@@ -1,0 +1,256 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Load custom configurations
+\input{config}
+
+% Hyperref settings
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    citecolor=primary
+}
+
+% Title settings
+\titleformat{\section}
+    {\Large\bfseries\color{primary}}
+    {}{0em}{}[\titlerule]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{secondary}}
+    {}{0em}{}
+
+% List settings
+\setlist[itemize]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
+\setlist[enumerate]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
+
+% Spacing
+\onehalfspacing
+
+% Header
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage\ / \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+% Main header with modern design and dark background
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[black] (-\hoffset-\oddsidemargin-2in,-4cm) rectangle (\paperwidth+\hoffset+\oddsidemargin+2in,3cm);
+\end{tikzpicture}
+
+\vspace{-2cm}
+\begin{center}
+    \begin{minipage}[t]{0.1\textwidth}
+        % Left column - Photo
+        \begin{center}
+            \begin{tikzpicture}
+                \clip (0,0) circle (1.5cm);
+                \node at (0,0) {\includegraphics[width=3cm]{Foto.png}};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.7\textwidth}
+        % Right column - Personal data
+        \begin{flushleft}
+            {\Huge\bfseries\color{white} \name}\\[0.4em]
+            {\large\color{white} \jobtitle}\\[1.2em]
+            
+            % Personal data in two columns
+            \begin{minipage}[t]{0.48\textwidth}
+                \begin{tabular}{ll}
+                    \color{white}\faIcon{envelope} & \color{white}\href{mailto:\email}{\email} \\
+                    \color{white}\faIcon{phone} & \color{white}\phone
+                \end{tabular}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.48\textwidth}
+                \begin{tabular}{ll}
+                    \color{white}\faIcon{linkedin} & \color{white}\href{https://www.\linkedin}{\linkedin} \\
+                    \color{white}\faIcon{github} & \color{white}\href{https://\github}{\github}
+                \end{tabular}
+            \end{minipage}
+            
+            \vspace{0.5em}
+            % Location below
+            \begin{center}
+                \color{white}\faIcon{map-marker-alt} \color{white} \location
+            \end{center}
+        \end{flushleft}
+    \end{minipage}
+\end{center}
+
+\vspace{2.5em}
+
+\vspace{1em}
+
+% Education
+\section{Education}
+
+% Master's Degree
+\subsection{\degree}
+\textit{\institution} \hfill \textit{\educationPeriod}
+\begin{itemize}
+    \education
+\end{itemize}
+\educationSkills
+
+% Bachelor's Degree
+\subsection{\degreeTwo}
+\textit{\institutionTwo} \hfill \textit{\educationPeriodTwo}
+\begin{itemize}
+    \educationTwo
+\end{itemize}
+\educationSkillsTwo
+
+% Professional Summary
+\section{Professional Summary}
+\summary
+
+% Professional Experience
+\section{Professional Experience}
+
+% Position 1
+\subsection{\positionTitle}
+\textit{\positionLocation} \hfill \textit{\positionPeriod}
+\begin{itemize}
+    \positionExperience
+\end{itemize}
+\positionSkills
+
+% Position 2
+\subsection{\positionTitleTwo}
+\textit{\positionLocationTwo} \hfill \textit{\positionPeriodTwo}
+\begin{itemize}
+    \positionExperienceTwo
+\end{itemize}
+\positionSkillsTwo
+
+% Position 3
+\subsection{\positionTitleThree}
+\textit{\positionLocationThree} \hfill \textit{\positionPeriodThree}
+\begin{itemize}
+    \positionExperienceThree
+\end{itemize}
+\positionSkillsThree
+
+% Position 4
+\subsection{\positionTitleFour}
+\textit{\positionLocationFour} \hfill \textit{\positionPeriodFour}
+\begin{itemize}
+    \positionExperienceFour
+\end{itemize}
+\positionSkillsFour
+
+% Position 5
+\subsection{\positionTitleFive}
+\textit{\positionLocationFive} \hfill \textit{\positionPeriodFive}
+\begin{itemize}
+    \positionExperienceFive
+\end{itemize}
+\positionSkillsFive
+
+% Position 6
+\subsection{\positionTitleSix}
+\textit{\positionLocationSix} \hfill \textit{\positionPeriodSix}
+\begin{itemize}
+    \positionExperienceSix
+\end{itemize}
+\positionSkillsSix
+
+% Position 7
+\subsection{\positionTitleSeven}
+\textit{\positionLocationSeven} \hfill \textit{\positionPeriodSeven}
+\begin{itemize}
+    \positionExperienceSeven
+\end{itemize}
+\positionSkillsSeven
+
+% Position 8
+\subsection{\positionTitleEight}
+\textit{\positionLocationEight} \hfill \textit{\positionPeriodEight}
+\begin{itemize}
+    \positionExperienceEight
+\end{itemize}
+\positionSkillsEight
+
+% Position 9
+\subsection{\positionTitleNine}
+\textit{\positionLocationNine} \hfill \textit{\positionPeriodNine}
+\begin{itemize}
+    \positionExperienceNine
+\end{itemize}
+\positionSkillsNine
+
+% Publications
+\section{Publications}
+
+% Publication 1
+\subsection{\publicationTitle}
+\textit{\publicationAuthors} \hfill \textit{\publicationYear}
+\begin{itemize}
+    \item \textit{\publicationType} - DOI: \href{https://doi.org/\publicationDOI}{\publicationDOI}
+\end{itemize}
+
+% Publication 2
+\subsection{\publicationTitleTwo}
+\textit{\publicationAuthorsTwo} \hfill \textit{\publicationYearTwo}
+\begin{itemize}
+    \item \textit{\publicationTypeTwo} - DOI: \href{https://doi.org/\publicationDOITwo}{\publicationDOITwo}
+\end{itemize}
+
+% Publication 3
+\subsection{\publicationTitleThree}
+\textit{\publicationAuthorsThree} \hfill \textit{\publicationYearThree}
+\begin{itemize}
+    \item \textit{\publicationTypeThree} - DOI: \href{https://doi.org/\publicationDOIThree}{\publicationDOIThree}
+\end{itemize}
+
+% Key Projects (you can add this section if he wants)
+% \section{Key Projects}
+% \begin{itemize}
+%     \projectOne
+% \end{itemize}
+
+% \begin{itemize}
+%     \projectTwo
+% \end{itemize}
+
+% Languages
+\section{Languages}
+
+% Language 1
+\subsection{\languageOne}
+\textit{\proficiencyOne}
+
+% Language 2
+\subsection{\languageTwo}
+\textit{\proficiencyTwo}
+
+% Language 3
+\subsection{\languageThree}
+\textit{\proficiencyThree}
+
+% Technical Certifications
+\section{Technical Certifications}
+\begin{itemize}
+    \certifications
+\end{itemize}
+
+\end{document} 
