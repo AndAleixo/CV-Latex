@@ -58,7 +58,7 @@ src/
 ├── curriculo.tex        # Main file
 ├── config_example.tex   # Example data template
 ├── config.tex          # Your data (not committed)
-└── Foto.png           # Your photo (can be committed)
+└── Foto.png           # Your photo 
 
 scripts/
 ├── Makefile           # Linux/Mac compilation
