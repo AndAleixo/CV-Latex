@@ -69,8 +69,10 @@
     \begin{minipage}[t]{0.7\textwidth}
         % Right column - Personal data
         \begin{flushleft}
-            {\Huge\bfseries\color{white} \name}\\[0.4em]
-            {\large\color{white} \jobtitle}\\[1.2em]
+            \begin{center}
+                {\Huge\bfseries\color{white} \name}\\[0.4em]
+                {\large\color{white} \jobtitle}\\[1.2em]
+            \end{center}
             
             % Personal data in two columns
             \begin{minipage}[t]{0.48\textwidth}
@@ -90,15 +92,17 @@
             \vspace{0.5em}
             % Location below
             \begin{center}
-                \color{white}\faIcon{map-marker-alt} \color{white} \location
+                \color{white}\faIcon{map-marker-alt} \color{white} \location \\
+                \color{white}\textit{\locationExtra}
             \end{center}
         \end{flushleft}
     \end{minipage}
 \end{center}
 
-\vspace{2.5em}
 
-\vspace{1em}
+% Professional Summary
+\section{Professional Summary}
+\summary
 
 % Education
 \section{Education}
@@ -118,10 +122,6 @@
     \educationTwo
 \end{itemize}
 \educationSkillsTwo
-
-% Professional Summary
-\section{Professional Summary}
-\summary
 
 % Professional Experience
 \section{Professional Experience}
@@ -235,17 +235,11 @@
 % Languages
 \section{Languages}
 
-% Language 1
-\subsection{\languageOne}
-\textit{\proficiencyOne}
-
-% Language 2
-\subsection{\languageTwo}
-\textit{\proficiencyTwo}
-
-% Language 3
-\subsection{\languageThree}
-\textit{\proficiencyThree}
+\begin{itemize}
+    \item \textbf{\languageOne}: \proficiencyOne
+    \item \textbf{\languageTwo}: \proficiencyTwo
+    \item \textbf{\languageThree}: \proficiencyThree
+\end{itemize}
 
 % Technical Certifications
 \section{Technical Certifications}
