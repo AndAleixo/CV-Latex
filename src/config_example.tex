@@ -1,5 +1,10 @@
 % Configuration file for resume customization
 % Edit this file to customize your information
+%
+% Professional experience: use \positionCompany and \positionRole separately
+% (do not merge into a single "Company - Title" string). The template prints
+% company | location on the first line and role | dates on the second line,
+% which parses more reliably in ATS tools.
 
 % =============================================================================
 % PERSONAL INFORMATION
@@ -26,8 +31,9 @@ Write your professional summary here. This should be a brief overview of your ex
 % =============================================================================
 
 % Position 1
-\newcommand{\positionTitle}{Company Name - Job Title}
-\newcommand{\positionPeriod}{Start Date - End Date}
+\newcommand{\positionCompany}{Company Name}
+\newcommand{\positionRole}{Job Title}
+\newcommand{\positionPeriod}{Start Date -- End Date}
 \newcommand{\positionLocation}{City, State, Country}
 \newcommand{\positionExperience}{
     \item Achievement or responsibility 1
@@ -39,8 +45,9 @@ Write your professional summary here. This should be a brief overview of your ex
 }
 
 % Position 2
-\newcommand{\positionTitleTwo}{Company Name - Job Title 2}
-\newcommand{\positionPeriodTwo}{Start Date - End Date}
+\newcommand{\positionCompanyTwo}{Company Name}
+\newcommand{\positionRoleTwo}{Job Title 2}
+\newcommand{\positionPeriodTwo}{Start Date -- End Date}
 \newcommand{\positionLocationTwo}{City, State, Country}
 \newcommand{\positionExperienceTwo}{
     \item Achievement or responsibility 1
@@ -52,8 +59,9 @@ Write your professional summary here. This should be a brief overview of your ex
 }
 
 % Position 3
-\newcommand{\positionTitleThree}{Another Company - Job Title}
-\newcommand{\positionPeriodThree}{Start Date - End Date}
+\newcommand{\positionCompanyThree}{Another Company}
+\newcommand{\positionRoleThree}{Job Title}
+\newcommand{\positionPeriodThree}{Start Date -- End Date}
 \newcommand{\positionLocationThree}{City, State, Country}
 \newcommand{\positionExperienceThree}{
     \item Achievement or responsibility 1
@@ -64,31 +72,134 @@ Write your professional summary here. This should be a brief overview of your ex
     {\small\textit{Skills:} Skill 1, Skill 2, Skill 3, Skill 4}
 }
 
+% Position 4
+\newcommand{\positionCompanyFour}{}
+\newcommand{\positionRoleFour}{}
+\newcommand{\positionPeriodFour}{}
+\newcommand{\positionLocationFour}{}
+\newcommand{\positionExperienceFour}{
+    \item
+}
+\newcommand{\positionSkillsFour}{}
+
+% Position 5
+\newcommand{\positionCompanyFive}{}
+\newcommand{\positionRoleFive}{}
+\newcommand{\positionPeriodFive}{}
+\newcommand{\positionLocationFive}{}
+\newcommand{\positionExperienceFive}{
+    \item
+}
+\newcommand{\positionSkillsFive}{}
+
+% Position 6
+\newcommand{\positionCompanySix}{}
+\newcommand{\positionRoleSix}{}
+\newcommand{\positionPeriodSix}{}
+\newcommand{\positionLocationSix}{}
+\newcommand{\positionExperienceSix}{
+    \item
+}
+\newcommand{\positionSkillsSix}{}
+
+% Position 7
+\newcommand{\positionCompanySeven}{}
+\newcommand{\positionRoleSeven}{}
+\newcommand{\positionPeriodSeven}{}
+\newcommand{\positionLocationSeven}{}
+\newcommand{\positionExperienceSeven}{
+    \item
+}
+\newcommand{\positionSkillsSeven}{}
+
+% Position 8
+\newcommand{\positionCompanyEight}{}
+\newcommand{\positionRoleEight}{}
+\newcommand{\positionPeriodEight}{}
+\newcommand{\positionLocationEight}{}
+\newcommand{\positionExperienceEight}{
+    \item
+}
+\newcommand{\positionSkillsEight}{}
+
+% Position 9
+\newcommand{\positionCompanyNine}{}
+\newcommand{\positionRoleNine}{}
+\newcommand{\positionPeriodNine}{}
+\newcommand{\positionLocationNine}{}
+\newcommand{\positionExperienceNine}{
+    \item
+}
+\newcommand{\positionSkillsNine}{}
+
 % =============================================================================
 % EDUCATION
 % =============================================================================
 
 \newcommand{\institution}{University Name}
+\newcommand{\educationLocation}{City, Country}
 \newcommand{\degree}{Degree Name}
-\newcommand{\educationPeriod}{Start Year - End Year}
+\newcommand{\educationPeriod}{Start Year -- End Year}
 \newcommand{\education}{
     \item Degree description
     \item Specialization or focus area
     \item Additional relevant information
 }
+\newcommand{\educationSkills}{}
+
+\newcommand{\institutionTwo}{University Name}
+\newcommand{\educationLocationTwo}{City, Country}
+\newcommand{\degreeTwo}{Second Degree Name}
+\newcommand{\educationPeriodTwo}{Start Year -- End Year}
+\newcommand{\educationTwo}{
+    \item Degree description
+    \item Specialization or focus area
+}
+\newcommand{\educationSkillsTwo}{}
 
 % =============================================================================
-% TECHNICAL SKILLS
+% PUBLICATIONS
 % =============================================================================
 
-% Programming Languages
+\newcommand{\publicationTitle}{Publication Title}
+\newcommand{\publicationAuthors}{Author A, Author B}
+\newcommand{\publicationYear}{2024}
+\newcommand{\publicationType}{Journal article}
+\newcommand{\publicationDOI}{10.0000/example}
+
+\newcommand{\publicationTitleTwo}{Publication Title Two}
+\newcommand{\publicationAuthorsTwo}{Author A, Author B}
+\newcommand{\publicationYearTwo}{2023}
+\newcommand{\publicationTypeTwo}{Conference paper}
+\newcommand{\publicationDOITwo}{10.0000/example-two}
+
+\newcommand{\publicationTitleThree}{Publication Title Three}
+\newcommand{\publicationAuthorsThree}{Author A, Author B}
+\newcommand{\publicationYearThree}{2022}
+\newcommand{\publicationTypeThree}{Journal article}
+\newcommand{\publicationDOIThree}{10.0000/example-three}
+
+% =============================================================================
+% LANGUAGES
+% =============================================================================
+
+\newcommand{\languageOne}{English}
+\newcommand{\proficiencyOne}{Native or bilingual}
+\newcommand{\languageTwo}{Spanish}
+\newcommand{\proficiencyTwo}{Professional working proficiency}
+\newcommand{\languageThree}{French}
+\newcommand{\proficiencyThree}{Elementary proficiency}
+
+% =============================================================================
+% TECHNICAL SKILLS (optional blocks if you extend the template)
+% =============================================================================
+
 \newcommand{\programmingLanguages}{
     \item \textbf{Language 1}: Description of skills and applications
     \item \textbf{Language 2}: Description of skills and applications
     \item \textbf{Language 3}: Description of skills and applications
 }
 
-% Tools and Technologies
 \newcommand{\toolsTechnologies}{
     \item \textbf{Category 1}: Tools, frameworks, or technologies
     \item \textbf{Category 2}: Tools, frameworks, or technologies
@@ -122,16 +233,6 @@ Write your professional summary here. This should be a brief overview of your ex
 }
 
 % =============================================================================
-% LANGUAGES
-% =============================================================================
-
-\newcommand{\languages}{
-    \item \textbf{Language 1}: Proficiency level
-    \item \textbf{Language 2}: Proficiency level
-    \item \textbf{Language 3}: Proficiency level
-}
-
-% =============================================================================
 % EXTRACURRICULAR ACTIVITIES
 % =============================================================================
 
@@ -145,16 +246,14 @@ Write your professional summary here. This should be a brief overview of your ex
 % COLOR CONFIGURATIONS
 % =============================================================================
 
-% You can customize colors here
-\definecolor{primary}{HTML}{2E86AB}      % Primary blue
-\definecolor{secondary}{HTML}{A23B72}    % Secondary purple
-\definecolor{textcolor}{HTML}{2C3E50}    % Dark gray for text
+\definecolor{primary}{HTML}{2E86AB}
+\definecolor{secondary}{HTML}{A23B72}
+\definecolor{textcolor}{HTML}{2C3E50}
 
 % =============================================================================
 % LAYOUT CONFIGURATIONS
 % =============================================================================
 
-% Page margins (in centimeters)
 \geometry{
     left=2cm,
     right=2cm,
@@ -162,9 +261,7 @@ Write your professional summary here. This should be a brief overview of your ex
     bottom=2cm
 }
 
-% Line spacing
 \onehalfspacing
 
-% List configurations
 \setlist[itemize]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
-\setlist[enumerate]{leftmargin=*,itemsep=0.1em,topsep=0.1em} 
+\setlist[enumerate]{leftmargin=*,itemsep=0.1em,topsep=0.1em}

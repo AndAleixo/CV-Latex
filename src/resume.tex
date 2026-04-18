@@ -17,6 +17,38 @@
 % Load custom configurations
 \input{config}
 
+% Justified body text, but almost no hyphenation: TeX stretches space between words (\emergencystretch)
+% instead of breaking words (avoids "effi-|ciency", "work-|flows").
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\doublehyphendemerits=100000
+\finalhyphendemerits=100000
+\tolerance=3000
+\emergencystretch=3.2em
+
+% Two-line CV block: #1 left top, #2 right top, #3 left bottom, #4 right bottom (bold / italic).
+\newcommand{\cvTwoLineBlock}[4]{%
+    \noindent
+    \begin{minipage}[t]{0.48\linewidth}\raggedright{\large\bfseries #1}\end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.48\linewidth}\raggedleft\itshape #2\end{minipage}\\[0.2em]
+    \noindent
+    \begin{minipage}[t]{0.48\linewidth}\raggedright\bfseries #3\end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.48\linewidth}\raggedleft\itshape #4\end{minipage}%
+    \par\vspace{0.45em}%
+}
+% Jobs: \addvspace separates entries. #1 company, #2 location, #3 role, #4 dates.
+\newcommand{\cvExperienceHeader}[4]{%
+    \par\addvspace{0.95\baselineskip}%
+    \cvTwoLineBlock{#1}{#2}{#3}{#4}%
+}
+% Education: university | location, then degree | dates (slightly tighter vertical gap than jobs).
+\newcommand{\cvEducationHeader}[4]{%
+    \par\addvspace{0.65\baselineskip}%
+    \cvTwoLineBlock{#1}{#2}{#3}{#4}%
+}
+
 % Hyperref settings
 \hypersetup{
     colorlinks=true,
@@ -31,10 +63,14 @@
     {}{0em}{}[\titlerule]
 
 \titleformat{\subsection}
-    {\large\bfseries\color{secondary}}
+    {\large\bfseries}
     {}{0em}{}
 
-% List settings
+% Extra vertical space before section / subsection titles (one line feel)
+\titlespacing*{\section}{0pt}{1.1\baselineskip}{0.75\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.85\baselineskip}{0.45\baselineskip}
+
+% List settings (inherits full justification from document; hyphen rules above still apply)
 \setlist[itemize]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
 \setlist[enumerate]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
 
@@ -44,6 +80,7 @@
 % Header
 \pagestyle{fancy}
 \fancyhf{}
+% Total pages need two pdflatex runs (see scripts/Makefile and compilar.bat).
 \fancyfoot[C]{\thepage\ / \pageref{LastPage}}
 \renewcommand{\headrulewidth}{0pt}
 
@@ -90,15 +127,12 @@
             \end{minipage}
             
             \vspace{0.5em}
-            % Location below
             \begin{center}
-                \color{white}\faIcon{map-marker-alt} \color{white} \location \\
-                \color{white}\textit{\locationExtra}
+                \color{white}\faIcon{map-marker-alt} \color{white} \location
             \end{center}
         \end{flushleft}
     \end{minipage}
 \end{center}
-
 
 % Professional Summary
 \section{Professional Summary}
@@ -107,17 +141,15 @@
 % Education
 \section{Education}
 
-% Master's Degree
-\subsection{\degree}
-\textit{\institution} \hfill \textit{\educationPeriod}
+% Master's
+\cvEducationHeader{\institution}{\educationLocation}{\degree}{\educationPeriod}
 \begin{itemize}
     \education
 \end{itemize}
 \educationSkills
 
-% Bachelor's Degree
-\subsection{\degreeTwo}
-\textit{\institutionTwo} \hfill \textit{\educationPeriodTwo}
+% Bachelor's
+\cvEducationHeader{\institutionTwo}{\educationLocationTwo}{\degreeTwo}{\educationPeriodTwo}
 \begin{itemize}
     \educationTwo
 \end{itemize}
@@ -127,79 +159,72 @@
 \section{Professional Experience}
 
 % Position 1
-\subsection{\positionTitle}
-\textit{\positionLocation} \hfill \textit{\positionPeriod}
+\cvExperienceHeader{\positionCompany}{\positionLocation}{\positionRole}{\positionPeriod}
 \begin{itemize}
     \positionExperience
 \end{itemize}
 \positionSkills
 
 % Position 2
-\subsection{\positionTitleTwo}
-\textit{\positionLocationTwo} \hfill \textit{\positionPeriodTwo}
+\cvExperienceHeader{\positionCompanyTwo}{\positionLocationTwo}{\positionRoleTwo}{\positionPeriodTwo}
 \begin{itemize}
     \positionExperienceTwo
 \end{itemize}
 \positionSkillsTwo
 
 % Position 3
-\subsection{\positionTitleThree}
-\textit{\positionLocationThree} \hfill \textit{\positionPeriodThree}
+\cvExperienceHeader{\positionCompanyThree}{\positionLocationThree}{\positionRoleThree}{\positionPeriodThree}
 \begin{itemize}
     \positionExperienceThree
 \end{itemize}
 \positionSkillsThree
 
 % Position 4
-\subsection{\positionTitleFour}
-\textit{\positionLocationFour} \hfill \textit{\positionPeriodFour}
+\cvExperienceHeader{\positionCompanyFour}{\positionLocationFour}{\positionRoleFour}{\positionPeriodFour}
 \begin{itemize}
     \positionExperienceFour
 \end{itemize}
 \positionSkillsFour
 
 % Position 5
-\subsection{\positionTitleFive}
-\textit{\positionLocationFive} \hfill \textit{\positionPeriodFive}
+\cvExperienceHeader{\positionCompanyFive}{\positionLocationFive}{\positionRoleFive}{\positionPeriodFive}
 \begin{itemize}
     \positionExperienceFive
 \end{itemize}
 \positionSkillsFive
 
 % Position 6
-\subsection{\positionTitleSix}
-\textit{\positionLocationSix} \hfill \textit{\positionPeriodSix}
+\cvExperienceHeader{\positionCompanySix}{\positionLocationSix}{\positionRoleSix}{\positionPeriodSix}
 \begin{itemize}
     \positionExperienceSix
 \end{itemize}
 \positionSkillsSix
 
 % Position 7
-\subsection{\positionTitleSeven}
-\textit{\positionLocationSeven} \hfill \textit{\positionPeriodSeven}
+\cvExperienceHeader{\positionCompanySeven}{\positionLocationSeven}{\positionRoleSeven}{\positionPeriodSeven}
 \begin{itemize}
     \positionExperienceSeven
 \end{itemize}
 \positionSkillsSeven
 
 % Position 8
-\subsection{\positionTitleEight}
-\textit{\positionLocationEight} \hfill \textit{\positionPeriodEight}
+\cvExperienceHeader{\positionCompanyEight}{\positionLocationEight}{\positionRoleEight}{\positionPeriodEight}
 \begin{itemize}
     \positionExperienceEight
 \end{itemize}
 \positionSkillsEight
 
 % Position 9
-\subsection{\positionTitleNine}
-\textit{\positionLocationNine} \hfill \textit{\positionPeriodNine}
+\cvExperienceHeader{\positionCompanyNine}{\positionLocationNine}{\positionRoleNine}{\positionPeriodNine}
 \begin{itemize}
     \positionExperienceNine
 \end{itemize}
 \positionSkillsNine
 
-% Publications
+% Publications (no accent colours: black titles + black DOI links in this block)
 \section{Publications}
+\begingroup
+\hypersetup{urlcolor=black,linkcolor=black}
 
 % Publication 1
 \subsection{\publicationTitle}
@@ -221,6 +246,8 @@
 \begin{itemize}
     \item \textit{\publicationTypeThree} - DOI: \href{https://doi.org/\publicationDOIThree}{\publicationDOIThree}
 \end{itemize}
+
+\endgroup
 
 % Key Projects (you can add this section if he wants)
 % \section{Key Projects}
