@@ -37,9 +37,17 @@ if not exist "%SRC_DIR%\%TARGET%.tex" (
 REM Create build directory
 if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
 
-REM Compile the resume
+REM Compile the resume (two passes: page count \pageref{LastPage} needs 2nd run)
 echo Running LaTeX compilation...
 cd "%SRC_DIR%"
+%LATEX% %LATEX_FLAGS% %TARGET%.tex
+if %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo ERROR: Compilation failed on first pass!
+    echo.
+    pause
+    exit /b 1
+)
 %LATEX% %LATEX_FLAGS% %TARGET%.tex
 
 if %ERRORLEVEL% NEQ 0 (
@@ -59,9 +67,9 @@ echo Resume compiled successfully!
 echo Output file: %TARGET%.pdf
 echo.
 
-REM Clean temporary files
+REM Clean temporary files (keep .aux so references and LastPage stay correct next time)
 echo Cleaning temporary files...
-del /q *.aux *.log *.out *.toc *.lof *.lot *.fls *.fdb_latexmk *.synctex.gz *.bbl *.blg *.bcf *.run.xml 2>nul
+del /q *.log *.out *.toc *.lof *.lot *.fls *.fdb_latexmk *.synctex.gz *.bbl *.blg *.bcf *.run.xml 2>nul
 
 echo Done!
 goto end
