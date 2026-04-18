@@ -17,7 +17,7 @@ all: $(TARGET).pdf
 $(TARGET).pdf: $(SRC_DIR)/$(TARGET).tex $(SRC_DIR)/config.tex
 	@echo "Compiling resume..."
 	@mkdir -p $(BUILD_DIR)
-	cd $(SRC_DIR) && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex
+	cd $(SRC_DIR) && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex
 	@mv $(SRC_DIR)/$(TARGET).pdf ./
 	@echo "Resume compiled successfully!"
 
@@ -25,7 +25,7 @@ $(TARGET).pdf: $(SRC_DIR)/$(TARGET).tex $(SRC_DIR)/config.tex
 quick: $(SRC_DIR)/$(TARGET).tex $(SRC_DIR)/config.tex
 	@echo "Quick compilation..."
 	@mkdir -p $(BUILD_DIR)
-	cd $(SRC_DIR) && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex
+	cd $(SRC_DIR) && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex
 	@mv $(SRC_DIR)/$(TARGET).pdf ./
 
 # Clean temporary files
