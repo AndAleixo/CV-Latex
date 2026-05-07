@@ -14,11 +14,16 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 
-% Load custom configurations
+% =============================================================================
+% INPUT (user-editable content)
+% =============================================================================
 \input{content}
 
-% Justified body text, but almost no hyphenation: TeX stretches space between words (\emergencystretch)
-% instead of breaking words (avoids "effi-|ciency", "work-|flows").
+% =============================================================================
+% TYPOGRAPHY (justify text, avoid ugly hyphenation)
+% =============================================================================
+% Keep text justified, but strongly discourage discretionary hyphenation.
+% Instead, TeX will slightly stretch inter-word spaces (via \emergencystretch).
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \doublehyphendemerits=100000
@@ -26,7 +31,12 @@
 \tolerance=3000
 \emergencystretch=3.2em
 
-% Two-line CV block: #1 left top, #2 right top, #3 left bottom, #4 right bottom (bold / italic).
+% =============================================================================
+% LAYOUT MACROS
+% =============================================================================
+% Two-line block:
+%   top row:    left (#1) / right (#2)
+%   bottom row: left (#3) / right (#4)
 \newcommand{\cvTwoLineBlock}[4]{%
     \noindent
     \begin{minipage}[t]{0.48\linewidth}\raggedright{\large\bfseries #1}\end{minipage}%
@@ -38,19 +48,22 @@
     \begin{minipage}[t]{0.48\linewidth}\raggedleft\itshape #4\end{minipage}%
     \par\vspace{0.45em}%
 }
-% Jobs: \addvspace separates entries. #1 company, #2 location, #3 role, #4 dates.
+
+% Job header spacing is intentionally larger than education spacing.
 \newcommand{\cvExperienceHeader}[4]{%
     \par\addvspace{0.95\baselineskip}%
     \cvTwoLineBlock{#1}{#2}{#3}{#4}%
 }
-% Education: university | location, then degree | dates (slightly tighter vertical gap than jobs).
+
 \newcommand{\cvEducationHeader}[4]{%
     \par\addvspace{0.65\baselineskip}%
     \cvTwoLineBlock{#1}{#2}{#3}{#4}%
 }
 
-% Experience entry wrapper so `content.tex` can define a list without One/Two/Three variables.
-% Usage: \Experience{company}{location}{role}{period}{\item ...}{skills line}
+% -----------------------------------------------------------------------------
+% Entry wrappers (content.tex defines lists; no One/Two/Three limits)
+% -----------------------------------------------------------------------------
+% \Experience{company}{location}{role}{period}{<items>}{<skills line>}
 \newcommand{\Experience}[6]{%
     \cvExperienceHeader{#1}{#2}{#3}{#4}%
     \begin{itemize}
@@ -59,8 +72,7 @@
     #6
 }
 
-% Education entry wrapper.
-% Usage: \Education{university}{location}{degree}{period}{\item ...}{skills line}
+% \Education{university}{location}{degree}{period}{<items>}{<skills line>}
 \newcommand{\Education}[6]{%
     \cvEducationHeader{#1}{#2}{#3}{#4}%
     \begin{itemize}
@@ -69,8 +81,7 @@
     #6
 }
 
-% Patent entry wrapper.
-% Usage: \Patent{title}{inventors}{year}{type}{id}{link}
+% \Patent{title}{inventors}{year}{type}{id}{link}
 \newcommand{\Patent}[6]{%
     \subsection{#1}%
     \textit{#2} \hfill \textit{#3}%
@@ -80,8 +91,7 @@
     \end{itemize}
 }
 
-% Publication entry wrapper.
-% Usage: \Publication{title}{authors}{year}{type}{doi}
+% \Publication{title}{authors}{year}{type}{doi}
 \newcommand{\Publication}[5]{%
     \subsection{#1}%
     \textit{#2} \hfill \textit{#3}%
@@ -90,13 +100,14 @@
     \end{itemize}
 }
 
-% Language entry wrapper.
-% Usage: \Language{language}{proficiency}
+% \Language{language}{proficiency}
 \newcommand{\Language}[2]{%
     \item \textbf{#1}: #2%
 }
 
-% Hyperref settings
+% =============================================================================
+% STYLING
+% =============================================================================
 \hypersetup{
     colorlinks=true,
     linkcolor=primary,
@@ -104,7 +115,7 @@
     citecolor=primary
 }
 
-% Title settings
+% Section / subsection styling
 \titleformat{\section}
     {\Large\bfseries\color{primary}}
     {}{0em}{}[\titlerule]
@@ -113,27 +124,31 @@
     {\large\bfseries}
     {}{0em}{}
 
-% Extra vertical space before section / subsection titles (one line feel)
+% Extra vertical space around titles
 \titlespacing*{\section}{0pt}{1.1\baselineskip}{0.75\baselineskip}
 \titlespacing*{\subsection}{0pt}{0.85\baselineskip}{0.45\baselineskip}
 
-% List settings (inherits full justification from document; hyphen rules above still apply)
+% List spacing
 \setlist[itemize]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
 \setlist[enumerate]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
 
-% Spacing
+% Global spacing
 \onehalfspacing
 
-% Header
+% =============================================================================
+% PAGE HEADER / FOOTER
+% =============================================================================
 \pagestyle{fancy}
 \fancyhf{}
-% Total pages need two pdflatex runs (see scripts/Makefile and compilar.bat).
+% Note: \pageref{LastPage} needs two LaTeX passes (scripts do this automatically).
 \fancyfoot[C]{\thepage\ / \pageref{LastPage}}
 \renewcommand{\headrulewidth}{0pt}
 
 \begin{document}
 
-% Main header with modern design and dark background
+% =============================================================================
+% TOP HEADER (photo + contacts)
+% =============================================================================
 \begin{tikzpicture}[remember picture,overlay]
     \fill[black] (-\hoffset-\oddsidemargin-2in,-4cm) rectangle (\paperwidth+\hoffset+\oddsidemargin+2in,3cm);
 \end{tikzpicture}
@@ -141,7 +156,7 @@
 \vspace{-2cm}
 \begin{center}
     \begin{minipage}[t]{0.1\textwidth}
-        % Left column - Photo
+        % Photo
         \begin{center}
             \begin{tikzpicture}
                 \clip (0,0) circle (1.5cm);
@@ -151,14 +166,14 @@
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.7\textwidth}
-        % Right column - Personal data
+        % Contacts
         \begin{flushleft}
             \begin{center}
                 {\Huge\bfseries\color{white} \name}\\[0.4em]
                 {\large\color{white} \jobtitle}\\[1.2em]
             \end{center}
             
-            % Personal data in two columns
+            % Two-column contact block
             \begin{minipage}[t]{0.48\textwidth}
                 \begin{tabular}{ll}
                     \color{white}\faIcon{envelope} & \color{white}\href{mailto:\email}{\email} \\
@@ -181,26 +196,25 @@
     \end{minipage}
 \end{center}
 
-% Professional Summary
+% =============================================================================
+% SECTIONS
+% =============================================================================
 \section{Professional Summary}
 \summary
 
-% Education
 \section{Education}
 \educations
 
-% Professional Experience
 \section{Professional Experience}
 \experiences
 
-% Patents
 \section{Patents}
 \begingroup
 \hypersetup{urlcolor=black,linkcolor=black}
 \patents
 \endgroup
 
-% Publications (no accent colours: black titles + black DOI links in this block)
+% Publications (keep this block monochrome for consistency)
 \section{Publications}
 \begingroup
 \hypersetup{urlcolor=black,linkcolor=black}
@@ -208,7 +222,7 @@
 
 \endgroup
 
-% Key Projects (you can add this section if he wants)
+% Optional section example:
 % \section{Key Projects}
 % \begin{itemize}
 %     \projectOne
@@ -218,14 +232,12 @@
 %     \projectTwo
 % \end{itemize}
 
-% Languages
 \section{Languages}
 
 \begin{itemize}
     \languages
 \end{itemize}
 
-% Technical Certifications
 \section{Technical Certifications}
 \begin{itemize}
     \certifications

@@ -1,7 +1,8 @@
 @echo off
-REM Professional LaTeX Resume Compilation Script for Windows
-REM Author: André F. Pinheiro Aleixo
-REM Usage: compilar.bat [option]
+REM =============================================================================
+REM Professional LaTeX Resume Build Script (Windows)
+REM =============================================================================
+REM Usage: compilar.bat [clean|view|check|help]
 
 set TARGET=main
 set LATEX=pdflatex
@@ -17,7 +18,10 @@ if "%1"=="check" goto check
 echo Compiling professional resume...
 echo.
 
-REM Check if content.tex exists
+REM -----------------------------------------------------------------------------
+REM Preconditions
+REM -----------------------------------------------------------------------------
+REM Check if src\content.tex exists
 if not exist "%SRC_DIR%\content.tex" (
     echo ERROR: content.tex not found!
     echo Please copy content.example.tex to content.tex and fill in your information.
@@ -26,7 +30,7 @@ if not exist "%SRC_DIR%\content.tex" (
     exit /b 1
 )
 
-REM Check if main file exists
+REM Check if src\main.tex exists
 if not exist "%SRC_DIR%\%TARGET%.tex" (
     echo ERROR: %TARGET%.tex not found!
     echo.
@@ -34,10 +38,12 @@ if not exist "%SRC_DIR%\%TARGET%.tex" (
     exit /b 1
 )
 
-REM Create build directory
+REM Create build directory (optional)
 if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
 
-REM Compile the resume (two passes: page count \pageref{LastPage} needs 2nd run)
+REM -----------------------------------------------------------------------------
+REM Build (two passes: \pageref{LastPage} is resolved on the second run)
+REM -----------------------------------------------------------------------------
 echo Running LaTeX compilation...
 cd "%SRC_DIR%"
 %LATEX% %LATEX_FLAGS% %TARGET%.tex
@@ -59,7 +65,9 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-REM Move PDF to root directory
+REM -----------------------------------------------------------------------------
+REM Output
+REM -----------------------------------------------------------------------------
 move "%TARGET%.pdf" "..\resume.pdf"
 
 echo.
@@ -67,7 +75,9 @@ echo Resume compiled successfully!
 echo Output file: resume.pdf
 echo.
 
-REM Clean temporary files (keep .aux so references and LastPage stay correct next time)
+REM -----------------------------------------------------------------------------
+REM Cleanup (keep .aux so cross-references stay correct on the next build)
+REM -----------------------------------------------------------------------------
 echo Cleaning temporary files...
 del /q *.log *.out *.toc *.lof *.lot *.fls *.fdb_latexmk *.synctex.gz *.bbl *.blg *.bcf *.run.xml 2>nul
 

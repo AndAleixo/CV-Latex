@@ -61,7 +61,7 @@ view: $(TARGET).pdf
 # Compile and view
 show: all view
 
-# Check if config.tex exists
+# Check if content.tex exists
 check-config:
 	@if [ ! -f $(SRC_DIR)/content.tex ]; then \
 		echo "ERROR: content.tex not found!"; \

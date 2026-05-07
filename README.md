@@ -1,6 +1,6 @@
 # LaTeX Resume Template
 
-This is my resume, but I think many people starting in technology would like to have an interesting template to create their resume. So I'm sharing mine that I made using LaTeX - below can help.
+This repository contains a LaTeX resume template and an example content file you can copy and customize.
 
 ## How to use
 
