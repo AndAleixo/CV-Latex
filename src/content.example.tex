@@ -30,176 +30,117 @@ Write your professional summary here. This should be a brief overview of your ex
 % PROFESSIONAL EXPERIENCE
 % =============================================================================
 
-% Position 1
-\newcommand{\positionCompany}{Company Name}
-\newcommand{\positionRole}{Job Title}
-\newcommand{\positionPeriod}{Start Date -- End Date}
-\newcommand{\positionLocation}{City, State, Country}
-\newcommand{\positionExperience}{
-    \item Achievement or responsibility 1
-    \item Achievement or responsibility 2
-    \item Achievement or responsibility 3
-}
-\newcommand{\positionSkills}{
-    {\small\textit{Skills:} Skill 1, Skill 2, Skill 3, Skill 4}
-}
+% No One/Two/Three...: just add as many \Experience blocks as you want.
+\newcommand{\experiences}{
+    \Experience
+        {Company Name}
+        {City, Country}
+        {Job Title}
+        {Start Date -- End Date}
+        {
+            \item Achievement or responsibility 1
+            \item Achievement or responsibility 2
+            \item Achievement or responsibility 3
+        }
+        {
+            {\small\textit{Skills:} Skill 1, Skill 2, Skill 3, Skill 4}
+        }
 
-% Position 2
-\newcommand{\positionCompanyTwo}{Company Name}
-\newcommand{\positionRoleTwo}{Job Title 2}
-\newcommand{\positionPeriodTwo}{Start Date -- End Date}
-\newcommand{\positionLocationTwo}{City, State, Country}
-\newcommand{\positionExperienceTwo}{
-    \item Achievement or responsibility 1
-    \item Achievement or responsibility 2
-    \item Achievement or responsibility 3
+    \Experience
+        {Another Company}
+        {City, Country}
+        {Job Title 2}
+        {Start Date -- End Date}
+        {
+            \item Achievement or responsibility 1
+            \item Achievement or responsibility 2
+        }
+        {
+            {\small\textit{Skills:} Skill 1, Skill 2}
+        }
 }
-\newcommand{\positionSkillsTwo}{
-    {\small\textit{Skills:} Skill 1, Skill 2, Skill 3, Skill 4}
-}
-
-% Position 3
-\newcommand{\positionCompanyThree}{Another Company}
-\newcommand{\positionRoleThree}{Job Title}
-\newcommand{\positionPeriodThree}{Start Date -- End Date}
-\newcommand{\positionLocationThree}{City, State, Country}
-\newcommand{\positionExperienceThree}{
-    \item Achievement or responsibility 1
-    \item Achievement or responsibility 2
-    \item Achievement or responsibility 3
-}
-\newcommand{\positionSkillsThree}{
-    {\small\textit{Skills:} Skill 1, Skill 2, Skill 3, Skill 4}
-}
-
-% Position 4
-\newcommand{\positionCompanyFour}{}
-\newcommand{\positionRoleFour}{}
-\newcommand{\positionPeriodFour}{}
-\newcommand{\positionLocationFour}{}
-\newcommand{\positionExperienceFour}{
-    \item
-}
-\newcommand{\positionSkillsFour}{}
-
-% Position 5
-\newcommand{\positionCompanyFive}{}
-\newcommand{\positionRoleFive}{}
-\newcommand{\positionPeriodFive}{}
-\newcommand{\positionLocationFive}{}
-\newcommand{\positionExperienceFive}{
-    \item
-}
-\newcommand{\positionSkillsFive}{}
-
-% Position 6
-\newcommand{\positionCompanySix}{}
-\newcommand{\positionRoleSix}{}
-\newcommand{\positionPeriodSix}{}
-\newcommand{\positionLocationSix}{}
-\newcommand{\positionExperienceSix}{
-    \item
-}
-\newcommand{\positionSkillsSix}{}
-
-% Position 7
-\newcommand{\positionCompanySeven}{}
-\newcommand{\positionRoleSeven}{}
-\newcommand{\positionPeriodSeven}{}
-\newcommand{\positionLocationSeven}{}
-\newcommand{\positionExperienceSeven}{
-    \item
-}
-\newcommand{\positionSkillsSeven}{}
-
-% Position 8
-\newcommand{\positionCompanyEight}{}
-\newcommand{\positionRoleEight}{}
-\newcommand{\positionPeriodEight}{}
-\newcommand{\positionLocationEight}{}
-\newcommand{\positionExperienceEight}{
-    \item
-}
-\newcommand{\positionSkillsEight}{}
-
-% Position 9
-\newcommand{\positionCompanyNine}{}
-\newcommand{\positionRoleNine}{}
-\newcommand{\positionPeriodNine}{}
-\newcommand{\positionLocationNine}{}
-\newcommand{\positionExperienceNine}{
-    \item
-}
-\newcommand{\positionSkillsNine}{}
 
 % =============================================================================
 % EDUCATION
 % =============================================================================
 
-\newcommand{\institution}{University Name}
-\newcommand{\educationLocation}{City, Country}
-\newcommand{\degree}{Degree Name}
-\newcommand{\educationPeriod}{Start Year -- End Year}
-\newcommand{\education}{
-    \item Degree description
-    \item Specialization or focus area
-    \item Additional relevant information
-}
-\newcommand{\educationSkills}{}
+\newcommand{\educations}{
+    \Education
+        {University Name}
+        {City, Country}
+        {Degree Name}
+        {Start Year -- End Year}
+        {
+            \item Degree description
+            \item Specialization or focus area
+            \item Additional relevant information
+        }
+        {
+        }
 
-\newcommand{\institutionTwo}{University Name}
-\newcommand{\educationLocationTwo}{City, Country}
-\newcommand{\degreeTwo}{Second Degree Name}
-\newcommand{\educationPeriodTwo}{Start Year -- End Year}
-\newcommand{\educationTwo}{
-    \item Degree description
-    \item Specialization or focus area
+    \Education
+        {University Name}
+        {City, Country}
+        {Second Degree Name}
+        {Start Year -- End Year}
+        {
+            \item Degree description
+            \item Specialization or focus area
+        }
+        {
+        }
 }
-\newcommand{\educationSkillsTwo}{}
 
 % =============================================================================
 % PATENTS
 % =============================================================================
 
-\newcommand{\patentTitle}{Patent title}
-\newcommand{\patentInventors}{Inventor A; Inventor B}
-\newcommand{\patentYear}{2026}
-\newcommand{\patentType}{Patent application}
-\newcommand{\patentId}{US2025XXXXXXA1 (PCT/EP20XX/XXXXXX)}
-\newcommand{\patentLink}{https://worldwide.espacenet.com/\&queryLang=en}
+\newcommand{\patents}{
+    \Patent
+        {Patent title}
+        {Inventor A; Inventor B}
+        {2026}
+        {Patent application}
+        {US2025XXXXXXA1 (PCT/EP20XX/XXXXXX)}
+        {https://worldwide.espacenet.com/\&queryLang=en}
+}
 
 % =============================================================================
 % PUBLICATIONS
 % =============================================================================
 
-\newcommand{\publicationTitle}{Publication Title}
-\newcommand{\publicationAuthors}{Author A, Author B}
-\newcommand{\publicationYear}{2024}
-\newcommand{\publicationType}{Journal article}
-\newcommand{\publicationDOI}{10.0000/example}
+\newcommand{\publications}{
+    \Publication
+        {Publication Title}
+        {Author A; Author B}
+        {2024}
+        {Journal article}
+        {10.0000/example}
 
-\newcommand{\publicationTitleTwo}{Publication Title Two}
-\newcommand{\publicationAuthorsTwo}{Author A, Author B}
-\newcommand{\publicationYearTwo}{2023}
-\newcommand{\publicationTypeTwo}{Conference paper}
-\newcommand{\publicationDOITwo}{10.0000/example-two}
+    \Publication
+        {Publication Title Two}
+        {Author A; Author B}
+        {2023}
+        {Conference paper}
+        {10.0000/example-two}
 
-\newcommand{\publicationTitleThree}{Publication Title Three}
-\newcommand{\publicationAuthorsThree}{Author A, Author B}
-\newcommand{\publicationYearThree}{2022}
-\newcommand{\publicationTypeThree}{Journal article}
-\newcommand{\publicationDOIThree}{10.0000/example-three}
+    \Publication
+        {Publication Title Three}
+        {Author A; Author B}
+        {2022}
+        {Journal article}
+        {10.0000/example-three}
+}
 
 % =============================================================================
 % LANGUAGES
 % =============================================================================
 
-\newcommand{\languageOne}{English}
-\newcommand{\proficiencyOne}{Native or bilingual}
-\newcommand{\languageTwo}{Spanish}
-\newcommand{\proficiencyTwo}{Professional working proficiency}
-\newcommand{\languageThree}{French}
-\newcommand{\proficiencyThree}{Elementary proficiency}
+\newcommand{\languages}{
+    \Language{English}{Native or bilingual}
+    \Language{Spanish}{Professional working proficiency}
+    \Language{French}{Elementary proficiency}
+}
 
 % =============================================================================
 % TECHNICAL SKILLS (optional blocks if you extend the template)
