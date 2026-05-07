@@ -14,17 +14,17 @@ This is my resume, but I think many people starting in technology would like to 
 
 Just rename the example file:
 ```bash
-cp src/config_example.tex src/config.tex
+cp src/content.example.tex src/content.tex
 ```
 
-Edit `src/config.tex` with:
+Edit `src/content.tex` with:
 - Your personal details
 - Professional experience
 - Education
 - Skills
 - Languages
 
-Put your photo as `src/Foto.png` 
+Put your photo as `src/photo.png` 
 
 ### 2. Compile
 
@@ -43,7 +43,7 @@ make
 **Manual:**
 ```bash
 cd src
-pdflatex -interaction=nonstopmode resume.tex
+pdflatex -interaction=nonstopmode main.tex
 ```
 
 ## What you need installed
@@ -55,10 +55,10 @@ pdflatex -interaction=nonstopmode resume.tex
 
 ```
 src/
-├── resume.tex           # Main file
-├── config_example.tex   # Example data template
-├── config.tex          # Your data (not committed)
-└── Foto.png           # Your photo 
+├── main.tex             # Main file
+├── content.example.tex  # Example data template
+├── content.tex          # Your data (not committed)
+└── photo.png            # Your photo 
 
 scripts/
 ├── Makefile           # Linux/Mac compilation
