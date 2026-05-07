@@ -3,7 +3,7 @@ REM Professional LaTeX Resume Compilation Script for Windows
 REM Author: André F. Pinheiro Aleixo
 REM Usage: compilar.bat [option]
 
-set TARGET=resume
+set TARGET=main
 set LATEX=pdflatex
 set LATEX_FLAGS=-interaction=nonstopmode
 set SRC_DIR=..\src
@@ -17,10 +17,10 @@ if "%1"=="check" goto check
 echo Compiling professional resume...
 echo.
 
-REM Check if config.tex exists
-if not exist "%SRC_DIR%\config.tex" (
-    echo ERROR: config.tex not found!
-    echo Please copy personal_data.tex to config.tex and fill in your information.
+REM Check if content.tex exists
+if not exist "%SRC_DIR%\content.tex" (
+    echo ERROR: content.tex not found!
+    echo Please copy content.example.tex to content.tex and fill in your information.
     echo.
     pause
     exit /b 1
@@ -60,11 +60,11 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 REM Move PDF to root directory
-move "%TARGET%.pdf" "..\"
+move "%TARGET%.pdf" "..\resume.pdf"
 
 echo.
 echo Resume compiled successfully!
-echo Output file: %TARGET%.pdf
+echo Output file: resume.pdf
 echo.
 
 REM Clean temporary files (keep .aux so references and LastPage stay correct next time)
@@ -95,10 +95,10 @@ goto end
 echo Checking setup...
 echo.
 
-if exist "%SRC_DIR%\config.tex" (
-    echo ✓ config.tex found
+if exist "%SRC_DIR%\content.tex" (
+    echo ✓ content.tex found
 ) else (
-    echo ✗ config.tex not found - Please copy personal_data.tex to config.tex
+    echo ✗ content.tex not found - Please copy content.example.tex to content.tex
 )
 
 if exist "%SRC_DIR%\%TARGET%.tex" (
@@ -107,10 +107,10 @@ if exist "%SRC_DIR%\%TARGET%.tex" (
     echo ✗ %TARGET%.tex not found
 )
 
-if exist "%SRC_DIR%\Foto.png" (
-    echo ✓ Foto.png found
+if exist "%SRC_DIR%\photo.png" (
+    echo ✓ photo.png found
 ) else (
-    echo ⚠ Foto.png not found - Resume will compile without photo
+    echo ⚠ photo.png not found - Resume will compile without photo
 )
 
 echo.
@@ -130,8 +130,8 @@ echo   help    - Show this help
 echo.
 echo Requirements:
 echo   - MiKTeX or TeX Live installed
-echo   - config.tex with your personal data
-echo   - Foto.png for profile photo (optional)
+echo   - content.tex with your personal data
+echo   - photo.png for profile photo (optional)
 echo.
 goto end
 

@@ -1,5 +1,5 @@
 # Personal data files (not committed to version control)
-src/config.tex
+src/content.tex
 build/
 
 # LaTeX temporary files

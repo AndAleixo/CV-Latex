@@ -4,6 +4,7 @@
 
 # Variables
 TARGET = resume
+TEX_MAIN = main
 LATEX = pdflatex
 LATEX_FLAGS = -interaction=nonstopmode
 CLEAN_EXTENSIONS = aux log out toc lof lot fls fdb_latexmk synctex.gz bbl blg bcf run.xml
@@ -14,19 +15,19 @@ BUILD_DIR = ../build
 all: $(TARGET).pdf
 
 # Main compilation
-$(TARGET).pdf: $(SRC_DIR)/$(TARGET).tex $(SRC_DIR)/config.tex
+$(TARGET).pdf: $(SRC_DIR)/$(TEX_MAIN).tex $(SRC_DIR)/content.tex
 	@echo "Compiling resume..."
 	@mkdir -p $(BUILD_DIR)
-	cd $(SRC_DIR) && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex
-	@mv $(SRC_DIR)/$(TARGET).pdf ./
+	cd $(SRC_DIR) && $(LATEX) $(LATEX_FLAGS) $(TEX_MAIN).tex && $(LATEX) $(LATEX_FLAGS) $(TEX_MAIN).tex
+	@mv $(SRC_DIR)/$(TEX_MAIN).pdf ./$(TARGET).pdf
 	@echo "Resume compiled successfully!"
 
 # Quick compilation (single run)
-quick: $(SRC_DIR)/$(TARGET).tex $(SRC_DIR)/config.tex
+quick: $(SRC_DIR)/$(TEX_MAIN).tex $(SRC_DIR)/content.tex
 	@echo "Quick compilation..."
 	@mkdir -p $(BUILD_DIR)
-	cd $(SRC_DIR) && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex && $(LATEX) $(LATEX_FLAGS) $(TARGET).tex
-	@mv $(SRC_DIR)/$(TARGET).pdf ./
+	cd $(SRC_DIR) && $(LATEX) $(LATEX_FLAGS) $(TEX_MAIN).tex && $(LATEX) $(LATEX_FLAGS) $(TEX_MAIN).tex
+	@mv $(SRC_DIR)/$(TEX_MAIN).pdf ./$(TARGET).pdf
 
 # Clean temporary files
 clean:
@@ -62,9 +63,9 @@ show: all view
 
 # Check if config.tex exists
 check-config:
-	@if [ ! -f $(SRC_DIR)/config.tex ]; then \
-		echo "ERROR: config.tex not found!"; \
-		echo "Please copy personal_data.tex to config.tex and fill in your information."; \
+	@if [ ! -f $(SRC_DIR)/content.tex ]; then \
+		echo "ERROR: content.tex not found!"; \
+		echo "Please copy content.example.tex to content.tex and fill in your information."; \
 		exit 1; \
 	fi
 
@@ -84,7 +85,7 @@ help:
 	@echo "  distclean    - Remove all generated files"
 	@echo "  view         - Open PDF viewer"
 	@echo "  show         - Compile and view"
-	@echo "  check-config - Check if config.tex exists"
+	@echo "  check-config - Check if content.tex exists"
 	@echo "  install-deps - Install LaTeX dependencies (Ubuntu/Debian)"
 	@echo "  help         - Show this help"
 
