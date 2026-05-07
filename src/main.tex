@@ -49,6 +49,53 @@
     \cvTwoLineBlock{#1}{#2}{#3}{#4}%
 }
 
+% Experience entry wrapper so `content.tex` can define a list without One/Two/Three variables.
+% Usage: \Experience{company}{location}{role}{period}{\item ...}{skills line}
+\newcommand{\Experience}[6]{%
+    \cvExperienceHeader{#1}{#2}{#3}{#4}%
+    \begin{itemize}
+        #5
+    \end{itemize}
+    #6
+}
+
+% Education entry wrapper.
+% Usage: \Education{university}{location}{degree}{period}{\item ...}{skills line}
+\newcommand{\Education}[6]{%
+    \cvEducationHeader{#1}{#2}{#3}{#4}%
+    \begin{itemize}
+        #5
+    \end{itemize}
+    #6
+}
+
+% Patent entry wrapper.
+% Usage: \Patent{title}{inventors}{year}{type}{id}{link}
+\newcommand{\Patent}[6]{%
+    \subsection{#1}%
+    \textit{#2} \hfill \textit{#3}%
+    \begin{itemize}
+        \item \textit{#4} - #5%
+        \item \href{#6}{Espacenet link}%
+    \end{itemize}
+}
+
+% Publication entry wrapper.
+% Usage: \Publication{title}{authors}{year}{type}{doi}
+\newcommand{\Publication}[5]{%
+    \subsection{#1}%
+    \textit{#2} \hfill \textit{#3}%
+    \begin{itemize}
+        \item \textit{#4} - DOI: \href{https://doi.org/#5}{#5}%
+    \end{itemize}
+}
+
+% Language entry wrapper.
+% Usage: \Language{language}{proficiency}
+\newcommand{\Language}[2]{%
+    \item \textbf{#1}: #2%
+}
+
 % Hyperref settings
 \hypersetup{
     colorlinks=true,
@@ -140,124 +187,24 @@
 
 % Education
 \section{Education}
-
-% Master's
-\cvEducationHeader{\institution}{\educationLocation}{\degree}{\educationPeriod}
-\begin{itemize}
-    \education
-\end{itemize}
-\educationSkills
-
-% Bachelor's
-\cvEducationHeader{\institutionTwo}{\educationLocationTwo}{\degreeTwo}{\educationPeriodTwo}
-\begin{itemize}
-    \educationTwo
-\end{itemize}
-\educationSkillsTwo
+\educations
 
 % Professional Experience
 \section{Professional Experience}
-
-% Position 1
-\cvExperienceHeader{\positionCompany}{\positionLocation}{\positionRole}{\positionPeriod}
-\begin{itemize}
-    \positionExperience
-\end{itemize}
-\positionSkills
-
-% Position 2
-\cvExperienceHeader{\positionCompanyTwo}{\positionLocationTwo}{\positionRoleTwo}{\positionPeriodTwo}
-\begin{itemize}
-    \positionExperienceTwo
-\end{itemize}
-\positionSkillsTwo
-
-% Position 3
-\cvExperienceHeader{\positionCompanyThree}{\positionLocationThree}{\positionRoleThree}{\positionPeriodThree}
-\begin{itemize}
-    \positionExperienceThree
-\end{itemize}
-\positionSkillsThree
-
-% Position 4
-\cvExperienceHeader{\positionCompanyFour}{\positionLocationFour}{\positionRoleFour}{\positionPeriodFour}
-\begin{itemize}
-    \positionExperienceFour
-\end{itemize}
-\positionSkillsFour
-
-% Position 5
-\cvExperienceHeader{\positionCompanyFive}{\positionLocationFive}{\positionRoleFive}{\positionPeriodFive}
-\begin{itemize}
-    \positionExperienceFive
-\end{itemize}
-\positionSkillsFive
-
-% Position 6
-\cvExperienceHeader{\positionCompanySix}{\positionLocationSix}{\positionRoleSix}{\positionPeriodSix}
-\begin{itemize}
-    \positionExperienceSix
-\end{itemize}
-\positionSkillsSix
-
-% Position 7
-\cvExperienceHeader{\positionCompanySeven}{\positionLocationSeven}{\positionRoleSeven}{\positionPeriodSeven}
-\begin{itemize}
-    \positionExperienceSeven
-\end{itemize}
-\positionSkillsSeven
-
-% Position 8
-\cvExperienceHeader{\positionCompanyEight}{\positionLocationEight}{\positionRoleEight}{\positionPeriodEight}
-\begin{itemize}
-    \positionExperienceEight
-\end{itemize}
-\positionSkillsEight
-
-% Position 9
-\cvExperienceHeader{\positionCompanyNine}{\positionLocationNine}{\positionRoleNine}{\positionPeriodNine}
-\begin{itemize}
-    \positionExperienceNine
-\end{itemize}
-\positionSkillsNine
+\experiences
 
 % Patents
 \section{Patents}
 \begingroup
 \hypersetup{urlcolor=black,linkcolor=black}
-\subsection{\patentTitle}
-\textit{\patentInventors} \hfill \textit{\patentYear}
-\begin{itemize}
-    \item \textit{\patentType} - \patentId
-    \item \href{\patentLink}{Espacenet link}
-\end{itemize}
+\patents
 \endgroup
 
 % Publications (no accent colours: black titles + black DOI links in this block)
 \section{Publications}
 \begingroup
 \hypersetup{urlcolor=black,linkcolor=black}
-
-% Publication 1
-\subsection{\publicationTitle}
-\textit{\publicationAuthors} \hfill \textit{\publicationYear}
-\begin{itemize}
-    \item \textit{\publicationType} - DOI: \href{https://doi.org/\publicationDOI}{\publicationDOI}
-\end{itemize}
-
-% Publication 2
-\subsection{\publicationTitleTwo}
-\textit{\publicationAuthorsTwo} \hfill \textit{\publicationYearTwo}
-\begin{itemize}
-    \item \textit{\publicationTypeTwo} - DOI: \href{https://doi.org/\publicationDOITwo}{\publicationDOITwo}
-\end{itemize}
-
-% Publication 3
-\subsection{\publicationTitleThree}
-\textit{\publicationAuthorsThree} \hfill \textit{\publicationYearThree}
-\begin{itemize}
-    \item \textit{\publicationTypeThree} - DOI: \href{https://doi.org/\publicationDOIThree}{\publicationDOIThree}
-\end{itemize}
+\publications
 
 \endgroup
 
@@ -275,9 +222,7 @@
 \section{Languages}
 
 \begin{itemize}
-    \item \textbf{\languageOne}: \proficiencyOne
-    \item \textbf{\languageTwo}: \proficiencyTwo
-    \item \textbf{\languageThree}: \proficiencyThree
+    \languages
 \end{itemize}
 
 % Technical Certifications
