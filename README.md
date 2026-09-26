@@ -48,6 +48,8 @@ pdflatex -interaction=nonstopmode main.tex
 ```
 Output: `src/main.pdf`.
 
+The repo tracks a sample `resume.pdf` (what a successful build looks like). Other PDFs are gitignored.
+
 ## Customizing
 
 | What | Where |
@@ -81,4 +83,5 @@ src/
 scripts/
 ├── Makefile              # Linux/Mac build
 └── compilar.bat          # Windows build
+resume.pdf                # Sample build output (tracked)
 ```
