@@ -2,8 +2,9 @@
 src/content.tex
 build/
 
-# Generated PDFs (compile locally; do not commit)
+# Generated PDFs — keep only the committed build example
 *.pdf
+!resume.pdf
 
 # LaTeX temporary files
 *.aux
