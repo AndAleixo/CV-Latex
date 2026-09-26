@@ -1,6 +1,9 @@
-# Personal data files (not committed to version control)
+# Personal data (not committed)
 src/content.tex
 build/
+
+# Generated PDFs (compile locally; do not commit)
+*.pdf
 
 # LaTeX temporary files
 *.aux
@@ -16,9 +19,6 @@ build/
 *.blg
 *.bcf
 *.run.xml
-
-# PDF files (optional - you can commit the final PDF if desired)
-# *.pdf
 
 # OS generated files
 .DS_Store
@@ -38,4 +38,4 @@ Thumbs.db
 
 # Backup files
 *.bak
-*.backup 
+*.backup
