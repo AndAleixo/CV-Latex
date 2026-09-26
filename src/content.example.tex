@@ -1,15 +1,24 @@
 % =============================================================================
-% EXAMPLE CONTENT FILE
+% CONTENT TEMPLATE
 % =============================================================================
-% Copy this file to `content.tex` and edit it with your information.
+% 1. Copy this file to content.tex  (gitignored — your private data)
+%      cp content.example.tex content.tex
+% 2. Edit the macros below.
+% 3. Place your portrait as photo.png in this folder (src/).
+% 4. Compile from scripts/ (compilar.bat or make) or run pdflatex twice in src/.
 %
-% The template renders entries from macros like \experiences, \educations, etc.
-% Add or remove blocks freely; there is no fixed maximum number of entries.
-
+% Accents in pdflatex: use \'e \'a \`a \"u \~n  or  \'e etc.
+%   Example: Andr\'e   Sebasti\'an   Pinheiro
+%
+% Special chars in arguments: \#  \&  \%  \_  \$
+% Dates: use -- for an en-dash  (2019 -- 2020)
+%
+% Add or remove \Experience / \Education / \Patent / \Publication blocks freely.
+% Prefer "Subsidiary, Parent Co" over "Parent Co (Subsidiary)" for ATS parsers.
 % =============================================================================
-% PERSONAL INFORMATION
-% =============================================================================
 
+% --- Personal information ----------------------------------------------------
+% linkedin / github: path only (no https://). Template adds the URL prefix.
 \newcommand{\name}{Your Full Name}
 \newcommand{\jobtitle}{Your Professional Title}
 \newcommand{\email}{your.email@example.com}
@@ -18,19 +27,13 @@
 \newcommand{\linkedin}{linkedin.com/in/yourprofile}
 \newcommand{\github}{github.com/yourusername}
 
-% =============================================================================
-% PROFESSIONAL SUMMARY
-% =============================================================================
-
+% --- Professional summary ----------------------------------------------------
 \newcommand{\summary}{
 Write your professional summary here. This should be a brief overview of your experience, skills, and career objectives. Keep it concise but impactful.
 }
 
-% =============================================================================
-% PROFESSIONAL EXPERIENCE
-% =============================================================================
-
-% Experience list (add as many \Experience blocks as you want).
+% --- Professional experience -------------------------------------------------
+% \Experience{company}{location}{role}{period}{items}{skills}
 \newcommand{\experiences}{
     \Experience
         {Company Name}
@@ -60,22 +63,18 @@ Write your professional summary here. This should be a brief overview of your ex
         }
 }
 
-% =============================================================================
-% EDUCATION
-% =============================================================================
-
+% --- Education ---------------------------------------------------------------
+% \Education{university}{location}{degree}{period}{items}{skills}
+% Use {} for items when the degree title in the header is enough.
 \newcommand{\educations}{
     \Education
         {University Name}
         {City, Country}
         {Degree Name}
         {Start Year -- End Year}
+        {}
         {
-            \item Degree description
-            \item Specialization or focus area
-            \item Additional relevant information
-        }
-        {
+            {\small\textit{Skills:} Skill 1, Skill 2}
         }
 
     \Education
@@ -83,18 +82,13 @@ Write your professional summary here. This should be a brief overview of your ex
         {City, Country}
         {Second Degree Name}
         {Start Year -- End Year}
-        {
-            \item Degree description
-            \item Specialization or focus area
-        }
+        {}
         {
         }
 }
 
-% =============================================================================
-% PATENTS
-% =============================================================================
-
+% --- Patents -----------------------------------------------------------------
+% \Patent{title}{inventors}{year}{type}{id}{url}
 \newcommand{\patents}{
     \Patent
         {Patent title}
@@ -105,10 +99,8 @@ Write your professional summary here. This should be a brief overview of your ex
         {https://worldwide.espacenet.com/\&queryLang=en}
 }
 
-% =============================================================================
-% PUBLICATIONS
-% =============================================================================
-
+% --- Publications ------------------------------------------------------------
+% \Publication{title}{authors}{year}{type}{doi}   (DOI only, no https://doi.org/)
 \newcommand{\publications}{
     \Publication
         {Publication Title}
@@ -132,80 +124,26 @@ Write your professional summary here. This should be a brief overview of your ex
         {10.0000/example-three}
 }
 
-% =============================================================================
-% LANGUAGES
-% =============================================================================
-
+% --- Languages ---------------------------------------------------------------
+% \Language{language}{proficiency}
 \newcommand{\languages}{
     \Language{English}{Native or bilingual}
     \Language{Spanish}{Professional working proficiency}
     \Language{French}{Elementary proficiency}
 }
 
-% =============================================================================
-% TECHNICAL SKILLS (optional blocks if you extend the template)
-% =============================================================================
-
-\newcommand{\programmingLanguages}{
-    \item \textbf{Language 1}: Description of skills and applications
-    \item \textbf{Language 2}: Description of skills and applications
-    \item \textbf{Language 3}: Description of skills and applications
-}
-
-\newcommand{\toolsTechnologies}{
-    \item \textbf{Category 1}: Tools, frameworks, or technologies
-    \item \textbf{Category 2}: Tools, frameworks, or technologies
-    \item \textbf{Category 3}: Tools, frameworks, or technologies
-}
-
-% =============================================================================
-% RELEVANT PROJECTS
-% =============================================================================
-
-\newcommand{\projectOne}{
-    \item Project description 1
-    \item Project description 2
-    \item Project description 3
-}
-
-\newcommand{\projectTwo}{
-    \item Project description 1
-    \item Project description 2
-    \item Project description 3
-}
-
-% =============================================================================
-% CERTIFICATIONS
-% =============================================================================
-
+% --- Certifications ----------------------------------------------------------
+% Plain \item list (rendered under Technical Certifications).
 \newcommand{\certifications}{
     \item \textbf{Certification 1} (Issuing organization)
     \item \textbf{Certification 2} (Issuing organization)
     \item \textbf{Certification 3} (Issuing organization)
 }
 
-% =============================================================================
-% EXTRACURRICULAR ACTIVITIES
-% =============================================================================
-
-\newcommand{\activities}{
-    \item \textbf{Activity 1} - Description of involvement and achievements
-    \item \textbf{Activity 2} - Description of involvement and achievements
-    \item \textbf{Activity 3} - Description of involvement and achievements
-}
-
-% =============================================================================
-% COLOR CONFIGURATIONS
-% =============================================================================
-
+% --- Theme -------------------------------------------------------------------
 \definecolor{primary}{HTML}{2E86AB}
-\definecolor{secondary}{HTML}{A23B72}
-\definecolor{textcolor}{HTML}{2C3E50}
 
-% =============================================================================
-% LAYOUT CONFIGURATIONS
-% =============================================================================
-
+% --- Page layout -------------------------------------------------------------
 \geometry{
     left=2cm,
     right=2cm,

@@ -1,3 +1,19 @@
+% =============================================================================
+% CV TEMPLATE — main.tex (layout / macros)
+% =============================================================================
+% Edit YOUR data in content.tex (copy from content.example.tex).
+% Put your portrait at src/photo.png (required; see note below).
+%
+% Build (two pdflatex passes — needed for page numbers):
+%   Windows:  scripts\compilar.bat   → ../resume.pdf
+%   Unix:     make -C scripts        → scripts/resume.pdf
+%   Manual:   cd src && pdflatex main.tex && pdflatex main.tex
+%
+% IMPORTANT — photo.png:
+%   If src/photo.png is missing, LaTeX may silently use another photo.png from
+%   the TeX tree (e.g. MiKTeX pas-cv demo). Always keep your file in src/.
+% =============================================================================
+
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -14,16 +30,10 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 
-% =============================================================================
-% INPUT (user-editable content)
-% =============================================================================
+% User data, colors, margins — defined in content.tex
 \input{content}
 
-% =============================================================================
-% TYPOGRAPHY (justify text, avoid ugly hyphenation)
-% =============================================================================
-% Keep text justified, but strongly discourage discretionary hyphenation.
-% Instead, TeX will slightly stretch inter-word spaces (via \emergencystretch).
+% Typography: justified text, discourage hyphenation
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \doublehyphendemerits=100000
@@ -31,39 +41,27 @@
 \tolerance=3000
 \emergencystretch=3.2em
 
-% =============================================================================
-% LAYOUT MACROS
-% =============================================================================
-% Two-line block:
-%   top row:    left (#1) / right (#2)
-%   bottom row: left (#3) / right (#4)
-\newcommand{\cvTwoLineBlock}[4]{%
-    \noindent
-    \begin{minipage}[t]{0.48\linewidth}\raggedright{\large\bfseries #1}\end{minipage}%
-    \hfill
-    \begin{minipage}[t]{0.48\linewidth}\raggedleft\itshape #2\end{minipage}\\[0.2em]
-    \noindent
-    \begin{minipage}[t]{0.48\linewidth}\raggedright\bfseries #3\end{minipage}%
-    \hfill
-    \begin{minipage}[t]{0.48\linewidth}\raggedleft\itshape #4\end{minipage}%
+% -----------------------------------------------------------------------------
+% Entry headers (single-column / ATS-friendly reading order)
+% Args: {organization}{location}{role or degree}{period}
+% -----------------------------------------------------------------------------
+\newcommand{\cvEntryHeader}[4]{%
+    \noindent{\large\bfseries #3}\\[0.12em]%
+    \noindent #1\ \textbar\ #2\ \textbar\ \textit{#4}%
     \par\vspace{0.45em}%
 }
 
-% Job header spacing is intentionally larger than education spacing.
 \newcommand{\cvExperienceHeader}[4]{%
     \par\addvspace{0.95\baselineskip}%
-    \cvTwoLineBlock{#1}{#2}{#3}{#4}%
+    \cvEntryHeader{#1}{#2}{#3}{#4}%
 }
 
 \newcommand{\cvEducationHeader}[4]{%
     \par\addvspace{0.65\baselineskip}%
-    \cvTwoLineBlock{#1}{#2}{#3}{#4}%
+    \cvEntryHeader{#1}{#2}{#3}{#4}%
 }
 
-% -----------------------------------------------------------------------------
-% Entry wrappers (content.tex defines lists; no One/Two/Three limits)
-% -----------------------------------------------------------------------------
-% \Experience{company}{location}{role}{period}{<items>}{<skills line>}
+% \Experience{company}{location}{role}{period}{bullet items}{skills line}
 \newcommand{\Experience}[6]{%
     \cvExperienceHeader{#1}{#2}{#3}{#4}%
     \begin{itemize}
@@ -72,31 +70,38 @@
     #6
 }
 
-% \Education{university}{location}{degree}{period}{<items>}{<skills line>}
+% \Education{university}{location}{degree}{period}{bullet items}{skills line}
+% Leave bullet items empty ({}) if the degree line is enough.
 \newcommand{\Education}[6]{%
     \cvEducationHeader{#1}{#2}{#3}{#4}%
-    \begin{itemize}
-        #5
-    \end{itemize}
+    \if\relax\detokenize{#5}\relax\else
+        \begin{itemize}
+            #5
+        \end{itemize}
+    \fi
     #6
 }
 
-% \Patent{title}{inventors}{year}{type}{id}{link}
+% \Patent{title}{inventors}{year}{type}{id}{url}
 \newcommand{\Patent}[6]{%
-    \subsection{#1}%
-    \textit{#2} \hfill \textit{#3}%
+    \par\addvspace{0.85\baselineskip}%
+    \noindent{\large\bfseries #1}\par\vspace{0.15em}%
+    \noindent\textit{#2}\\[0.1em]
+    \noindent\textit{#3}%
     \begin{itemize}
-        \item \textit{#4} - #5%
+        \item \textit{#4} --- #5%
         \item \href{#6}{#5}%
     \end{itemize}
 }
 
 % \Publication{title}{authors}{year}{type}{doi}
 \newcommand{\Publication}[5]{%
-    \subsection{#1}%
-    \textit{#2} \hfill \textit{#3}%
+    \par\addvspace{0.85\baselineskip}%
+    \noindent{\large\bfseries #1}\par\vspace{0.15em}%
+    \noindent\textit{#2}\\[0.1em]
+    \noindent\textit{#3}%
     \begin{itemize}
-        \item \textit{#4} - DOI: \href{https://doi.org/#5}{#5}%
+        \item \textit{#4} --- DOI: \href{https://doi.org/#5}{#5}%
     \end{itemize}
 }
 
@@ -105,9 +110,6 @@
     \item \textbf{#1}: #2%
 }
 
-% =============================================================================
-% STYLING
-% =============================================================================
 \hypersetup{
     colorlinks=true,
     linkcolor=primary,
@@ -115,7 +117,6 @@
     citecolor=primary
 }
 
-% Section / subsection styling
 \titleformat{\section}
     {\Large\bfseries\color{primary}}
     {}{0em}{}[\titlerule]
@@ -124,89 +125,90 @@
     {\large\bfseries}
     {}{0em}{}
 
-% Extra vertical space around titles
 \titlespacing*{\section}{0pt}{1.1\baselineskip}{0.75\baselineskip}
 \titlespacing*{\subsection}{0pt}{0.85\baselineskip}{0.45\baselineskip}
 
-% List spacing
 \setlist[itemize]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
 \setlist[enumerate]{leftmargin=*,itemsep=0.1em,topsep=0.1em}
 
-% Global spacing
 \onehalfspacing
 
-% =============================================================================
-% PAGE HEADER / FOOTER
-% =============================================================================
 \pagestyle{fancy}
 \fancyhf{}
-% Note: \pageref{LastPage} needs two LaTeX passes (scripts do this automatically).
 \fancyfoot[C]{\thepage\ / \pageref{LastPage}}
 \renewcommand{\headrulewidth}{0pt}
 
+\newsavebox{\cvheaderbox}
+\newlength{\cvheaderht}
+
 \begin{document}
 
-% =============================================================================
-% TOP HEADER (photo + contacts)
-% =============================================================================
+% -----------------------------------------------------------------------------
+% Header: black full-bleed band + photo + contacts
+% Do not wrap \sbox in a TeX group — the box assignment would be discarded.
+% -----------------------------------------------------------------------------
+\hypersetup{urlcolor=white,linkcolor=white}
+\sbox{\cvheaderbox}{%
+    \begin{minipage}{\textwidth}
+        \vspace{1em}%
+        \begin{minipage}[t]{3.2cm}
+            \vspace{0pt}%
+            \centering
+            \begin{tikzpicture}
+                \clip (0,0) circle (1.4cm);
+                \node at (0,0) {\includegraphics[width=2.8cm]{photo.png}};
+            \end{tikzpicture}%
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[t]{\dimexpr\textwidth-3.5cm\relax}
+            \vspace{0.35em}%
+            \centering
+            {\Huge\bfseries\color{white}\name}\\[0.35em]
+            {\large\color{white}\jobtitle}\\[0.7em]
+            {\normalsize\color{white}%
+                \faIcon{envelope}\ \href{mailto:\email}{\email}%
+                \ \textbar\ 
+                \faIcon{phone}\ \phone}\\[0.25em]
+            {\normalsize\color{white}%
+                \faIcon{map-marker-alt}\ \location}\\[0.25em]
+            {\normalsize\color{white}%
+                \faIcon{linkedin}\ \href{https://www.\linkedin}{\linkedin}%
+                \ \textbar\ 
+                \faIcon{github}\ \href{https://\github}{\github}}%
+        \end{minipage}%
+        \vspace{1em}%
+    \end{minipage}%
+}
+\hypersetup{urlcolor=primary,linkcolor=primary}
+\setlength{\cvheaderht}{\dimexpr\ht\cvheaderbox+\dp\cvheaderbox\relax}
+
 \begin{tikzpicture}[remember picture,overlay]
-    \fill[black] (-\hoffset-\oddsidemargin-2in,-4cm) rectangle (\paperwidth+\hoffset+\oddsidemargin+2in,3cm);
+    \fill[black]
+        (current page.north west)
+        rectangle
+        ([yshift=-\cvheaderht]current page.north east);
 \end{tikzpicture}
 
-\vspace{-2cm}
-\begin{center}
-    \begin{minipage}[t]{0.1\textwidth}
-        % Photo
-        \begin{center}
-            \begin{tikzpicture}
-                \clip (0,0) circle (1.5cm);
-                \node at (0,0) {\includegraphics[width=3cm]{photo.png}};
-            \end{tikzpicture}
-        \end{center}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.7\textwidth}
-        % Contacts
-        \begin{flushleft}
-            \begin{center}
-                {\Huge\bfseries\color{white} \name}\\[0.4em]
-                {\large\color{white} \jobtitle}\\[1.2em]
-            \end{center}
-            
-            % Two-column contact block
-            \begin{minipage}[t]{0.48\textwidth}
-                \begin{tabular}{ll}
-                    \color{white}\faIcon{envelope} & \color{white}\href{mailto:\email}{\email} \\
-                    \color{white}\faIcon{phone} & \color{white}\phone
-                \end{tabular}
-            \end{minipage}
-            \hfill
-            \begin{minipage}[t]{0.48\textwidth}
-                \begin{tabular}{ll}
-                    \color{white}\faIcon{linkedin} & \color{white}\href{https://www.\linkedin}{\linkedin} \\
-                    \color{white}\faIcon{github} & \color{white}\href{https://\github}{\github}
-                \end{tabular}
-            \end{minipage}
-            
-            \vspace{0.5em}
-            \begin{center}
-                \color{white}\faIcon{map-marker-alt} \color{white} \location
-            \end{center}
-        \end{flushleft}
-    \end{minipage}
-\end{center}
+% Align flow with the overlay band (geometry top margin + topskip)
+\makeatletter
+\nointerlineskip
+\vspace*{-\dimexpr\Gm@tmargin+\topskip\relax}%
+\makeatother
+\noindent\usebox{\cvheaderbox}%
 
-% =============================================================================
-% SECTIONS
-% =============================================================================
+\vspace{1.35em}
+
+% -----------------------------------------------------------------------------
+% Body sections — reorder or comment out as needed
+% -----------------------------------------------------------------------------
 \section{Professional Summary}
 \summary
 
-\section{Education}
-\educations
-
 \section{Professional Experience}
 \experiences
+
+\section{Education}
+\educations
 
 \section{Patents}
 \begingroup
@@ -214,16 +216,13 @@
 \patents
 \endgroup
 
-% Publications (keep this block monochrome for consistency)
 \section{Publications}
 \begingroup
 \hypersetup{urlcolor=black,linkcolor=black}
 \publications
-
 \endgroup
 
 \section{Languages}
-
 \begin{itemize}
     \languages
 \end{itemize}
@@ -233,4 +232,4 @@
     \certifications
 \end{itemize}
 
-\end{document} 
+\end{document}
